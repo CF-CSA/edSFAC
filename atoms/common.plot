@@ -2,7 +2,7 @@ set terminal pdfcairo enh color solid font "Helvetica,10"
 
 set encoding iso_8859_15
 
-datafile="../e-scatter.txt"
+datafile="../../e-scatter.txt"
 
 cm(x) = ca1*exp(-cb1*x**2) \
         +ca2*exp(-cb2*x**2) \
