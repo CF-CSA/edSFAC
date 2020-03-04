@@ -33,7 +33,7 @@ xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
 
-set fit logfile "logs/".Z.name.".plot" errorvariables
+set fit logfile "logs/".Z.name.".log" errorvariables
 
 fit  [xmin:xmax] cm(x) datafile ind idx usi 1:(column(col)>-999?column(col):1/0) via ca1,cb1,ca2,cb2,ca3,ca4,cb3,cb4,cc
 sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f =\n  %3.1f %3.1f %.3f %.3f %.3f", \
