@@ -25,6 +25,7 @@ PLOT= 01H.plot \
     26Fe.plot \
     28Ni.plot \
     29Cu.plot \
+    30Zn.plot \
     34Se.plot \
     79Au.plot \
     80Hg.plot
@@ -56,6 +57,7 @@ PDF= pdfs/01H.pdf \
     pdfs/26Fe.pdf \
     pdfs/28Ni.pdf \
     pdfs/29Cu.pdf \
+    pdfs/30Zn.pdf \
     pdfs/34Se.pdf \
     pdfs/79Au.pdf \
     pdfs/80Hg.pdf

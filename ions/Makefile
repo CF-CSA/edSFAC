@@ -7,6 +7,7 @@ PLOT=   08O0.25-.plot \
 	25Mn4+.plot \
 	29Cu1+.plot \
 	29Cu2+.plot \
+	30Zn2+.plot \
 	64Gd3+.plot \
 	65Tb3+.plot
 
@@ -24,6 +25,7 @@ PDF   = \
 	pdfs/26Fe3+.pdf \
 	pdfs/29Cu1+.pdf \
 	pdfs/29Cu2+.pdf \
+	pdfs/30Zn2+.pdf \
 	pdfs/45Rh3+.pdf \
 	pdfs/59Pr3+.pdf \
 	pdfs/64Gd3+.pdf \
@@ -38,5 +40,5 @@ pdfs/%.pdf: %.plot
 .PHONY: clean
 
 clean:
-	rm -f sfac-electron.dfx ${PDF} 
+	rm -f sfac-electron.dfx ${PDF} logs/*.log
 

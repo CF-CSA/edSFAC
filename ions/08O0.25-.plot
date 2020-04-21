@@ -1,10 +1,10 @@
-ca1             = -40
-ca2             = -10
-ca3             = 10
-ca4             = 1
-cb1             = 12
-cb2             = 5
-cb3             = 10
+ca1             = -220
+ca2             = 50
+ca3             = 20
+ca4             = 2
+cb1             = 500
+cb2             = 100
+cb3             = 50
 cb4             = 5
 cc              = 0.5
 
@@ -86,7 +86,7 @@ set label 1 sprintf (labelstr, \
 		      cb3, cb3_err, \
 		      cb4, cb4_err, \
 		      cc, cc_err)  \
-	     at graph 0.5,graph 0.7  font "Courier"
+	     at graph 0.5,graph 0.7  font "FreeMono,12"
 
 set output "pdfs/".Z.name.".pdf" 
 plot datafile usi 1:(column(2) > -999 && column(4)>-999?0.75*column(2)+0.25*column(4):1/0) ti name, \
@@ -94,7 +94,7 @@ plot datafile usi 1:(column(2) > -999 && column(4)>-999?0.75*column(2)+0.25*colu
 	cm(x) ti "Cromer-Mann fit"
 
 set title "Difference between Cromer-Mann approximation and tabulated values"
-set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "Courier, 12"
+set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "FreeMono, 12"
 
 plot datafile usi 1:($5>-245 ? cm($1)-$5 : 1/0)  noti w lp
 
