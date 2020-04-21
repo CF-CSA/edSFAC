@@ -70,10 +70,5 @@ plot datafile ind idx usi 1:(column(col)>-999?column(col):1/0) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set title "Difference between Cromer-Mann approximation and tabulated values"
-<<<<<<< HEAD
 set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "FreeMono,12"
-=======
-set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "Courier, 12"
-
->>>>>>> df2e9485af55eeff4ffa31709ac9c456384b6d0a
 plot datafile ind idx usi 1:(column(col)>-999?cm(column(1))-column(col):1/0) noti w lp
