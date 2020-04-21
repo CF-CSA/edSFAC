@@ -13,7 +13,7 @@ fp = 0.00
 fpp=  0.00
 mu = 0.00
 r  = 1.12 # https://en.wikipedia.org/wiki/Ionic_radius
-wt = 144.242 # https://en.wikipedia.org/wiki/Neodynium
+wt = 144.242 # https://en.wikipedia.org/wiki/Neodymium
 
 idx = 6
 col = 3
