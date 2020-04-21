@@ -63,14 +63,12 @@ set label 1 sprintf (labelstr, \
 		      cb3, cb3_err, \
 		      cb4, cb4_err, \
 		      cc, cc_err)  \
-	     at graph 0.5,graph 0.7  font "Courier"
+	     at graph 0.5,graph 0.7  font "FreeMono,12"
 
 set output "pdfs/".Z.name.".pdf" 
 plot datafile ind idx usi 1:(column(col)>-999?column(col):1/0) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set title "Difference between Cromer-Mann approximation and tabulated values"
-set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "Courier, 12"
-
+set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "FreeMono,12"
 plot datafile ind idx usi 1:(column(col)>-999?cm(column(1))-column(col):1/0) noti w lp
-

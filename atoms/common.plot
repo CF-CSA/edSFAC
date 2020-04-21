@@ -24,14 +24,16 @@ pm5(x) = p5a1*exp(-p5b1*x**2) \
 set style line 1 lc rgb "black" ps 0.5 pt 2
 set style line 2 lc rgb "dark-green" ps 0.5 pt 2
 
-set x2tics border ("5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.5" 1.0)
+set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
 set xtics nomirror
 
-xmin= 0
-xmax=1.0
-set xrange [xmin:xmax]
+dmax = 35.0 # in Angstrom
+dmin = 0.6 # in Angstrom
+xmin=0.5/dmax 
+xmax=0.5/dmin
+set xrange [0:xmax]
 
-set fit logfile "logs/".Z.name.".plot" errorvariables
+set fit logfile "logs/".Z.name.".log" errorvariables
 
 fit  [xmin:xmax] cm(x) datafile ind idx usi 1:(column(col)>-999?column(col):1/0) via ca1,cb1,ca2,cb2,ca3,ca4,cb3,cb4,cc
 sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f =\n  %3.1f %3.1f %.3f %.3f %.3f", \
@@ -61,13 +63,12 @@ set label 1 sprintf (labelstr, \
 		      cb3, cb3_err, \
 		      cb4, cb4_err, \
 		      cc, cc_err)  \
-	     at graph 0.5,graph 0.7  font "Courier"
+	     at graph 0.5,graph 0.7  font "FreeMono,12"
 
 set output "pdfs/".Z.name.".pdf" 
 plot datafile ind idx usi 1:(column(col)>-999?column(col):1/0) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set title "Difference between Cromer-Mann approximation and tabulated values"
-unset label 1
+set label 1 sprintf ("Fit range: %4.2f \305 - %4.2f \305\n%11s%4.3f \305^{-1} - %4.3f \305^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 font "FreeMono,12"
 plot datafile ind idx usi 1:(column(col)>-999?cm(column(1))-column(col):1/0) noti w lp
-

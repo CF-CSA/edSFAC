@@ -19,9 +19,11 @@ PLOT= 01H.plot \
     19K.plot \
     20Ca.plot \
     21Sc.plot \
+    22Ti.plot \
     23V.plot \
     25Mn.plot \
     26Fe.plot \
+    28Ni.plot \
     29Cu.plot \
     34Se.plot \
     79Au.plot \
@@ -48,9 +50,11 @@ PDF= pdfs/01H.pdf \
     pdfs/19K.pdf \
     pdfs/20Ca.pdf \
     pdfs/21Sc.pdf \
+    pdfs/22Ti.pdf \
     pdfs/23V.pdf \
     pdfs/25Mn.pdf \
     pdfs/26Fe.pdf \
+    pdfs/28Ni.pdf \
     pdfs/29Cu.pdf \
     pdfs/34Se.pdf \
     pdfs/79Au.pdf \
@@ -65,4 +69,4 @@ pdfs/%.pdf: %.plot
 .PHONY: clean
 
 clean:
-	rm sfac-electron.dfx ${PDF}
+	rm -f sfac-electron.dfx ${PDF} logs/*
