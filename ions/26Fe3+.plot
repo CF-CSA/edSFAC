@@ -1,11 +1,11 @@
-ca1             = 400
-ca2             = 80
-ca3             = 1
-ca4             = 1
-cb1             = 100
-cb2             = 500
-cb3             = 100
-cb4             = 5
+ca1             = 17
+ca2             = 54
+ca3             = 5
+ca4             = 3
+cb1             = 189
+cb2             = 600
+cb3             = 50
+cb4             = 7
 cc              = 1
 
 # additional parameters for SFAC line
