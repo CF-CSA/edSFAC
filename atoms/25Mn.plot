@@ -13,7 +13,7 @@ fp = 0.00
 fpp=  0.00
 mu = 0.00
 wt = 54.938
-r  = 0.785 # Mn2+
+r  = 1.270 # Atomic radius
 
 name="Mn"
 Z="25"
