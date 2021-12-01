@@ -13,7 +13,7 @@ cm(x) = ca1*exp(-cb1*x**2) \
 
 Z = Z0+charge
 
-fidx=Z0/10 +1
+fidx=10* (Z0/10) +1
 datafile = sprintf("../../sf_Z%02d-Z%02d.txt", fidx, fidx+9)
 col=Z0%10+1
 
