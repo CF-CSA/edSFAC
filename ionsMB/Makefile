@@ -1,9 +1,11 @@
 PDFDIR= pdfs
 LOGDIR= logs
 
-PDFS:= $(addprefix $(PDFDIR)/, 06C+.pdf \
+PDFS:= $(addprefix $(PDFDIR)/, 01H+.pdf \
+			       06C+.pdf \
                                07N-.pdf \
 			       08O-.pdf \
+			       11Na+.pdf \
 			       13Al3+.pdf \
 			       14Si4+.pdf \
 			       )
@@ -13,7 +15,7 @@ all: common.plot sfac-electron.dfx
 
 sfac-electron.dfx: $(PDFS)
 
-$(PDFDIR)/%.pdf: %.plot 
+$(PDFDIR)/%.pdf: %.plot common.plot
 	gnuplot $<
 
 .PHONY: clean

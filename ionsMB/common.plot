@@ -18,8 +18,8 @@ datafile = sprintf("../../sf_Z%02d-Z%02d.txt", fidx, fidx+9)
 col=Z0%10+1
 
 # adjust these
-dmax = 23.0 # in Angstrom
-dmin = 0.70 # in Angstrom
+dmax = 20.0 # in Angstrom
+dmin = 0.80 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
@@ -39,7 +39,7 @@ fit [xmin:xmax] cm(x) datafile \
     via ca1, ca2, ca3, ca4, cb1, cb2, cb3, cb4, cc
 
 sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f =\n".\
-	"%3.1f %3.1f %.3f %.3f %.3f", \
+	"   %3.1f %3.1f %.3f %.3f %.3f", \
         name, ca1, cb1, ca2, cb2, ca3, cb3, ca4, cb4, cc, fp, fpp, mu, r, wt)
 
 set print "sfac-electron.dfx" append
