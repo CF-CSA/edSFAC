@@ -28,6 +28,7 @@ PLOT= 01H.plot \
     30Zn.plot \
     34Se.plot \
     44Ru.plot \
+    76Os.plot \
     79Au.plot \
     80Hg.plot
 
@@ -61,6 +62,7 @@ PDF= pdfs/01H.pdf \
     pdfs/30Zn.pdf \
     pdfs/34Se.pdf \
     pdfs/44Ru.pdf \
+    pdfs/76Os.pdf \
     pdfs/79Au.pdf \
     pdfs/80Hg.pdf
 
