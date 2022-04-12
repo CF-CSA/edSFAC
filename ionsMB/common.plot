@@ -18,6 +18,11 @@ datafile = sprintf("../../sf_Z%02d-Z%02d.txt", fidx, fidx+9)
 col=Z0%10+1
 
 # adjust these
+set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
+set xtics nomirror
+set xlabel "s [1/\U+212B]"
+set x2label "d [\U+212B]"
+
 dmax = 20.0 # in Angstrom
 dmin = 0.80 # in Angstrom
 xmin=0.5/dmax
