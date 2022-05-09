@@ -10,7 +10,6 @@ PDFS:= $(addprefix $(PDFDIR)/, 01H+.pdf \
 			       14Si4+.pdf \
 			       29Cu1+.pdf \
 			       29Cu2+.pdf \
-			       99overlay_OO-_SiAl.pdf \
 			       )
 
 
