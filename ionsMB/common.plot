@@ -23,8 +23,8 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 20.0 # in Angstrom
-dmin = 0.80 # in Angstrom
+dmax = 27.0 # in Angstrom
+dmin = 0.70 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
@@ -76,8 +76,13 @@ set label 1 sprintf (labelstr, \
 plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
-set title "Difference between Cromer-Mann approximation and tabulated values"
+set title "Absoulte Difference f_{tab} - f_{CM} between Cromer-Mann approximation and tabulated values"
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 
 plot [xmin:xmax] datafile usi 1:(cm(column(1))-(0.023934*(Z-column(col))/column(1)**2)) noti w lp
+
+set title "Relative difference (f_{tab} - f_{CM})/f_{tab} between Cromer-Mann approximation and tabulated values"
+set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
+
+plot [xmin:xmax] datafile usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
 

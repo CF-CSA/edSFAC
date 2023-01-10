@@ -11,15 +11,15 @@ r  = 1.55 # # https://en.wikipedia.org/wiki/Nitrogen, vdW
 wt = 14.006 # https://en.wikipedia.org/wiki/Nitrogen
 
 # starting values. The closer the better
-ca1             = -40
-ca2             = -5
-ca3             = 10
-ca4             = 1
+ca1             = -126
+ca2             = -29
+ca3             = -77
+ca4             = -7
 
-cb1             = 100
-cb2             = 10
-cb3             = 1
-cb4             = 5
-cc              = 0.5
+cb1             = 3500
+cb2             = 847
+cb3             = -0.1
+cb4             = 170
+cc              = 75
 
 load 'common.plot'

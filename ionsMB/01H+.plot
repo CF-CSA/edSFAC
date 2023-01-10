@@ -11,7 +11,7 @@ r  = 0.12 #   https://en.wikipedia.org/wiki/Hydrogen, sp covalent radius
 wt = 1.008 # https://en.wikipedia.org/wiki/Carbon
 
 # starting values. The closer the better
-ca1= 4
+ca1= 40
 ca2= 1.5
 ca3= 0.3
 ca4= 0.01
