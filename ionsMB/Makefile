@@ -8,8 +8,14 @@ PDFS:= $(addprefix $(PDFDIR)/, 01H+.pdf \
 			       11Na+.pdf \
 			       13Al3+.pdf \
 			       14Si4+.pdf \
+			       17Cl-.pdf \
+			       19K+.pdf \
+			       26Fe2+.pdf \
+			       26Fe3+.pdf \
 			       29Cu1+.pdf \
 			       29Cu2+.pdf \
+			       81Tl3+.pdf \
+			       81Tl+.pdf \
 			       )
 
 
@@ -24,3 +30,12 @@ $(PDFDIR)/%.pdf: %.plot common.plot
 
 clean:
 	rm -fr $(PDFDIR)/*.pdf $(LOGDIR)/*.log sfac-electron.dfx
+
+
+
+
+
+
+
+
+
