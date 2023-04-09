@@ -2,16 +2,16 @@ Z0 = 13
 charge = 3
 name = "Al3+"
 
-ca1             = 100
-ca2             = 10
-ca3             = 30
-ca4             = 1
+ca1             = 53
+ca2             = 7.5
+ca3             = 16.7
+ca4             = 3
 
-cb1             = 2000
-cb2             = 50
-cb3             = 300
-cb4             = 10
-cc              = 0.5
+cb1             = 595
+cb2             = 39
+cb3             = 150
+cb4             = 7
+cc              = 1
 
 # additional parameters for SFAC line
 fp = 0.00
