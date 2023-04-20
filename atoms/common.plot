@@ -43,9 +43,9 @@ sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f 
 print sfac
 set print "sfac-electron.dfx" append
 print sfac
-sumCM = ca1*cb1 + ca2+cb2 + ca3*cb3 + ca4*cb4 + cc
-logtext = sprintf("REM: sum CM = %8.3f\n", sumCM)
-print logtext
+# sumCM = ca1*cb1 + ca2+cb2 + ca3*cb3 + ca4*cb4 + cc
+# logtext = sprintf("REM: sum CM = %8.3f\n", sumCM)
+# print logtext
 
 set title sfac 
 labelstr=          "a1=%9.4f +/- %5.4f\n"
