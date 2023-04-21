@@ -28,7 +28,7 @@ PLOT= 01H.plot \
     30Zn.plot \
     34Se.plot \
     44Ru.plot \
-    53I.pl0t \
+    53I.plot \
     76Os.plot \
     79Au.plot \
     80Hg.plot
