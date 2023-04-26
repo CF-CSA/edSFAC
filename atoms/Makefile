@@ -26,8 +26,10 @@ PLOT= 01H.plot \
     28Ni.plot \
     29Cu.plot \
     30Zn.plot \
+    31Ga.plot \
     34Se.plot \
     44Ru.plot \
+    46Pd.plot \
     53I.plot \
     76Os.plot \
     79Au.plot \
@@ -61,8 +63,10 @@ PDF= pdfs/01H.pdf \
     pdfs/28Ni.pdf \
     pdfs/29Cu.pdf \
     pdfs/30Zn.pdf \
+    pdfs/31Ga.pdf \
     pdfs/34Se.pdf \
     pdfs/44Ru.pdf \
+    pdfs/46Pd.pdf \
     pdfs/53I.pdf \
     pdfs/76Os.pdf \
     pdfs/79Au.pdf \

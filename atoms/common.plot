@@ -29,7 +29,7 @@ set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.
 set xtics nomirror
 
 dmax = 15.0 # in Angstrom
-dmin = 0.64 # in Angstrom
+dmin = 0.44 # in Angstrom
 # xmin=0.5/dmax 
 xmin = 0
 xmax=0.5/dmin
@@ -74,7 +74,7 @@ set output "pdfs/".Z.name.".pdf"
 plot datafile ind idx usi 1:(column(col)>-999?column(col):1/0) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
-set title "Difference between Cromer-Mann approximation and tabulated values"
+set title "Absolute difference between Cromer-Mann approximation and tabulated values"
 if ( xmin == 0)  {
 set label 1 sprintf ("Fit \U+221E \U+212B - %4.2f \U+212B\n%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmin, " ", xmin, xmax) at graph 0.2, graph 0.2
 }
@@ -82,3 +82,10 @@ else {
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 }
 plot datafile ind idx usi 1:(column(col)>-999?cm(column(1))-column(col):1/0) noti w lp
+
+set title "Relative difference (f_{tab} - f_{CM})/f_{tab} between Cromer-Mann approximation and tabulated values"
+set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
+
+plot [xmin:xmax] datafile ind idx usi 1:(column(col)>-999? (cm(column(1))-column(col))/column(col):1/0) noti w lp
+
+

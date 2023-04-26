@@ -1,13 +1,13 @@
 
-ca1 = 1
-ca2 = 0.5
+ca1 = 0.2
+ca2 = 0.15
 ca3 = 0.1
-ca4 = 0.01
-cb1 = 15
+ca4 = 0.05
+cb1 = 3
 cb2 = 10
-cb3 = 5
-cb4 = 1
-cc = 0.5
+cb3 = 0.2
+cb4 = 20
+cc = 0.1
 
 # additional parameters for SFAC line
 fp = 0.00
