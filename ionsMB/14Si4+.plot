@@ -1,6 +1,8 @@
 Z0 = 14
 charge = 4
 name = "Si4+"
+fidx= 3
+col= 9
 
 ca1             = 200
 ca2             = 50
@@ -20,5 +22,5 @@ mu = 0.00
 r  = 0.54 # https://en.wikipedia.org/wiki/Ionic_radius
 wt = 28.084 # https://en.wikipedia.org/wiki/Silicon
 
-load 'common.plot'
+load 'common_2023.plot'
 

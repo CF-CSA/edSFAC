@@ -13,9 +13,9 @@ cm(x) = ca1*exp(-cb1*x**2) \
 
 Z = Z0+charge
 
-fidx=10* (Z0/10) +1
-datafile = sprintf("../../sf_Z%02d-Z%02d.txt", fidx, fidx+9)
-col=Z0%10+1
+# fidx=10* (Z0/10) +1
+datafile= "../literature/TableS03_X-ray_scattering_factors_for_all_318_species.txt"
+#col=Z0%10+1
 
 # adjust these
 set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
@@ -40,6 +40,7 @@ set output pdffilename
 #	cm(x) ti "Cromer-Mann fit"
 
 fit [xmin:xmax] cm(x) datafile \
+    index fidx \
     usi 1:(0.023934*(Z-column(col))/column(1)**2) \
     via ca1, ca2, ca3, ca4, cb1, cb2, cb3, cb4, cc
 
@@ -73,16 +74,19 @@ set label 1 sprintf (labelstr, \
                       cc, cc_err)  \
              at graph 0.5,graph 0.7  font "FreeMono,12"
 
-plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name, \
+plot [xmin:xmax] datafile index fidx \
+	usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set title "Absoulte Difference f_{tab} - f_{CM} between Cromer-Mann approximation and tabulated values"
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 
-plot [xmin:xmax] datafile usi 1:(cm(column(1))-(0.023934*(Z-column(col))/column(1)**2)) noti w lp
+plot [xmin:xmax] datafile index fidx \
+	usi 1:(cm(column(1))-(0.023934*(Z-column(col))/column(1)**2)) noti w lp
 
 set title "Relative difference (f_{tab} - f_{CM})/f_{tab} between Cromer-Mann approximation and tabulated values"
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 
-plot [xmin:xmax] datafile usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
+plot [xmin:xmax] datafile index fidx \
+	usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
 
