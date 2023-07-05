@@ -1,7 +1,8 @@
 Z0 = 8
 charge = -1
-
 name = "O-"
+# fidx=  1 # for new table in common_2023.plot
+# col= 10  # for new table in common_2023.plot
 
 # crystallographic parameters
 fp = 0.00

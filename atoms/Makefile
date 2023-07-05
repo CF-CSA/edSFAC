@@ -23,6 +23,7 @@ PLOT= 01H.plot \
     23V.plot \
     25Mn.plot \
     26Fe.plot \
+    27Co.plot \
     28Ni.plot \
     29Cu.plot \
     30Zn.plot \
@@ -60,6 +61,7 @@ PDF= pdfs/01H.pdf \
     pdfs/23V.pdf \
     pdfs/25Mn.pdf \
     pdfs/26Fe.pdf \
+    pdfs/27Co.pdf \
     pdfs/28Ni.pdf \
     pdfs/29Cu.pdf \
     pdfs/30Zn.pdf \
