@@ -23,8 +23,8 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 20.0  # in Angstrom
-dmin = 0.60 # in Angstrom
+dmax = 15.0  # in Angstrom
+dmin = 0.75 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
@@ -49,6 +49,8 @@ sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f 
 
 set print "sfac-electron.dfx" append
 print sfac
+f000 = ca1+ca2+ca3+ca4+cc;
+print sprintf("REM F000 (%s) = %5.4f", name, f000)
 
 set title sfac
 labelstr=          "a1=%9.4f +/- %5.4f\n"
@@ -85,4 +87,5 @@ set title "Relative difference (f_{tab} - f_{CM})/f_{tab} between Cromer-Mann ap
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 
 plot [xmin:xmax] datafile usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
+
 
