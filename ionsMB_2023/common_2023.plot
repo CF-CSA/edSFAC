@@ -11,13 +11,11 @@ cm(x) = ca1*exp(-cb1*x**2) \
         +ca4*exp(-cb4*x**2) \
         + cc
 
-# Z0 = electrons; Z = nuclear charge
-Z= Z0+charge
-# charge = Delta Z in Yonekura
+Z = Z0+charge
 
-fidx=10* (Z0/10) +1
-datafile = sprintf("../../sf_Z%02d-Z%02d.txt", fidx, fidx+9)
-col=Z0%10+1
+# fidx=10* (Z0/10) +1
+datafile= "../literature/TableS03_X-ray_scattering_factors_for_all_318_species.txt"
+#col=Z0%10+1
 
 # adjust these
 set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
@@ -25,7 +23,7 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 21.0  # in Angstrom
+dmax = 20.0  # in Angstrom
 dmin = 0.70 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
@@ -38,11 +36,12 @@ set fit logfile logfilename errorvariables
 set output pdffilename
 
 # for debugging: plot cm parametrization before fitting
-#plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."Mott Bethe", \
+#plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."pre fit", \
 #	cm(x) ti "Cromer-Mann fit"
 
 fit [xmin:xmax] cm(x) datafile \
-    usi 1:(0.023934*(Z-column(col))/column(1)**2) \
+    index fidx \
+    usi 1:(0.023934*(Z0-column(col))/column(1)**2) \
     via ca1, ca2, ca3, ca4, cb1, cb2, cb3, cb4, cc
 
 sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f =\n".\
@@ -52,8 +51,6 @@ sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f 
 print sfac
 set print "sfac-electron.dfx" append
 print sfac
-f000 = ca1+ca2+ca3+ca4+cc;
-print sprintf("REM F000 (%s) = %5.4f", name, f000)
 
 set title sfac
 labelstr=          "a1=%9.4f +/- %5.4f\n"
@@ -78,17 +75,19 @@ set label 1 sprintf (labelstr, \
                       cc, cc_err)  \
              at graph 0.5,graph 0.7  font "FreeMono,12"
 
-plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name, \
+plot [xmin:xmax] datafile index fidx \
+	usi 1:(0.023934*(Z0-column(col))/column(1)**2) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set title "Absoulte Difference f_{tab} - f_{CM} between Cromer-Mann approximation and tabulated values"
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 
-plot [xmin:xmax] datafile usi 1:(cm(column(1))-(0.023934*(Z-column(col))/column(1)**2)) noti w lp
+plot [xmin:xmax] datafile index fidx \
+	usi 1:(cm(column(1))-(0.023934*(Z0-column(col))/column(1)**2)) noti w lp
 
 set title "Relative difference (f_{tab} - f_{CM})/f_{tab} between Cromer-Mann approximation and tabulated values"
 set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
 
-plot [xmin:xmax] datafile usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
-
+plot [xmin:xmax] datafile index fidx \
+	usi 1:((cm(column(1))-(0.023934*(Z0-column(col))/column(1)**2))/cm(column(1))) noti w lp
 
