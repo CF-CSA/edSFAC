@@ -1,7 +1,7 @@
 Z = 14
-name = "Si4+"
+name = "Si2+"
 fidx= 2 #index in datafile
-col= 9  # column in datafile
+col= 7  # column in datafile
 
 ca1             = 75
 ca2             = 21

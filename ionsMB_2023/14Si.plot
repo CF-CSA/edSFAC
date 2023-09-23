@@ -1,17 +1,17 @@
 Z = 14
-name = "Si4+"
+name = "Si"
 fidx= 2 #index in datafile
-col= 9  # column in datafile
+col= 10  # column in datafile
 
-ca1             = 75
-ca2             = 21
-ca3             = 5.7
-ca4             = 2
+ca1             = 10
+ca2             = 3
+ca3             = 1
+ca4             = 1
 
-cb1             = 1200
-cb2             = 320
-cb3             = 71
-cb4             = 10
+cb1             = 100
+cb2             = 50
+cb3             = 10
+cb4             = 5
 cc              = 0.5
 
 # additional parameters for SFAC line
