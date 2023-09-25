@@ -1,7 +1,6 @@
 Z0 = 14
 charge = 4
 name = "Si4+"
-fidx= 3
 
 ca1             = 250
 ca2             = 65
