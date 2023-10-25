@@ -1,5 +1,5 @@
 Z = 8
-name = "O-"
+name = "O1-"
 fidx=  1 # for new table in common_2023.plot
 col= 10  # for new table in common_2023.plot
 
