@@ -1,7 +1,7 @@
-Z = 16
-name = "S6+"
-fidx= 3 #index in datafile
-col= 10  # column in datafile
+Z = 17
+name = "Cl3+"
+fidx= 4 #index in datafile
+col= 4  # column in datafile
 
 ca1             = 10
 ca2             = 3
@@ -19,7 +19,7 @@ fp = 0.00
 fpp=  0.00
 mu = 0.00
 r  = 0.43 # https://en.wikipedia.org/wiki/Ionic_radius
-wt = 32.059 # https://en.wikipedia.org/wiki/Silicon
+wt = 35.446 # https://en.wikipedia.org/wiki/Chlorine
 
 load 'common_2023.plot'
 

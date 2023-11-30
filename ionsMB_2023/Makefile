@@ -27,6 +27,14 @@ PDFS:= $(addprefix $(PDFDIR)/, \
 	14Si4+.pdf \
 	14Si.pdf \
 	16S6+.pdf \
+	17Cl1+.pdf \
+	17Cl1-.pdf \
+	17Cl2+.pdf \
+	17Cl3+.pdf \
+	17Cl4+.pdf \
+	17Cl5+.pdf \
+	17Cl6+.pdf \
+	17Cl7+.pdf \
 )
 
 all: common_2023.plot sfac-electron.dfx
