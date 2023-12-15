@@ -3,10 +3,10 @@ name = "Si2+"
 fidx= 2 #index in datafile
 col= 7  # column in datafile
 
-ca1             = 75
-ca2             = 21
-ca3             = 5.7
-ca4             = 2
+ca1             = 125
+ca2             = 30
+ca3             = 8
+ca4             = 3
 
 cb1             = 1200
 cb2             = 320

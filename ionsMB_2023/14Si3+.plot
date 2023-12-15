@@ -3,9 +3,9 @@ name = "Si3+"
 fidx= 2 #index in datafile
 col= 8  # column in datafile
 
-ca1             = 75
-ca2             = 21
-ca3             = 5.7
+ca1             = 200
+ca2             = 40
+ca3             = 10
 ca4             = 2
 
 cb1             = 1200
