@@ -11,15 +11,15 @@ r  = 1.26 # https://en.wikipedia.org/wiki/Ionic_radius. O2-
 wt = 15.999 # https://en.wikipedia.org/wiki/Sodium
 
 # starting values. The closer the better
-ca1             = -58
-ca2             = -12
-ca3             =  -35
-ca4             =  14
+ca1             = -65
+ca2             = -5
+ca3             =  0.29
+ca4             =  0.1
 
-cb1             = 1300
-cb2             = 220
-cb3             = 0.6
-cb4             = 1.2
-cc              = 9
+cb1             = 3000
+cb2             = 100
+cb3             = 1
+cb4             = 20
+cc              = 4
 
 load 'common_2023.plot'
