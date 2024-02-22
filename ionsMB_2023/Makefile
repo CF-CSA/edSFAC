@@ -7,6 +7,7 @@ PDFS:= $(addprefix $(PDFDIR)/, \
 	05B1+.pdf \
 	05B2+.pdf \
 	05B3+.pdf \
+	06C.pdf \
 	06C1+.pdf \
 	06C2+.pdf \
 	06C3+.pdf \
