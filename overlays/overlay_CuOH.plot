@@ -2,18 +2,18 @@ set terminal pdfcairo enh color solid font "Tex Gyre Heros,14"
 set encoding utf8
 
 # a1 a2 a3 a4 b1 b2 b3 b4 c  Z0 charge
-array Si[13] = [ 250, 70, 20, 7, 1800, 500, 100, 15, 0.5, 14, 4]
+array Cu[13] = [ 250, 70, 20, 7, 1800, 500, 100, 15, 0.5, 14, 4]
 array Al[13] = [ 190, 20, 50, 5, 2000, 100, 500, 20, 0.5, 13, 3]
 array O1[13] = [ -70, -10, 1, -4,  2000, 500, 1, 20, 0.5, 8, -1]
 array O[13] = [0.01, 0.3, 0.8, 0.7, 500, 20, 5, 0.1, 0.1, 8,0]
 
-name = "Comparison_OO-_SiAl"
+name = "overlay_CuOH"
 
-cmSi(x) = Si[1]*exp(-Si[5]*x**2) \
-        +Si[2]*exp(-Si[6]*x**2) \
-        +Si[3]*exp(-Si[7]*x**2) \
-        +Si[4]*exp(-Si[8]*x**2) \
-        + Si[9]
+cmCu(x) = Cu[1]*exp(-Cu[5]*x**2) \
+        +Cu[2]*exp(-Cu[6]*x**2) \
+        +Cu[3]*exp(-Cu[7]*x**2) \
+        +Cu[4]*exp(-Cu[8]*x**2) \
+        + Cu[9]
 
 cmAl(x) = Al[1]*exp(-Al[5]*x**2) \
         +Al[2]*exp(-Al[6]*x**2) \
@@ -33,8 +33,8 @@ cmO(x) = O[1]*exp(-O[5]*x**2) \
         +O[4]*exp(-O[8]*x**2) \
         + O[9]
 
-Si[12] = 10* (Si[10]/10) +1
-Si[13] = sprintf("../../sf_Z%02d-Z%02d.txt", Si[12], Si[12]+9)
+Cu[12] = 10* (Cu[10]/10) +1
+Cu[13] = sprintf("../../sf_Z%02d-Z%02d.txt", Cu[12], Cu[12]+9)
 
 Al[12] = 10* (Al[10]/10) +1
 Al[13] = sprintf("../../sf_Z%02d-Z%02d.txt", Al[12], Al[12]+9)
@@ -46,7 +46,7 @@ O[12] = 10* (O[10]/10) +1
 O[13] = sprintf("../../sf_Z%02d-Z%02d.txt", O[12], O[12]+9)
 
 
-set style line 1 lc rgb "grey" lw 2 ps 0.5 pt 2 # Si(IV)
+set style line 1 lc rgb "grey" lw 2 ps 0.5 pt 2 # Cu(IV)
 set style line 2 lc rgb "blue" lw 2 ps 0.5 pt 2 # Al(III)
 set style line 3 lc rgb "orange" lw 2 ps 0.5 pt 2 # O
 set style line 4 lc rgb "red" lw 2 ps 0.5 pt 2 # O-
@@ -57,21 +57,21 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 10.0 # in Angstrom
+dmax = 25.0 # in Angstrom
 dmin = 0.80 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
 
-logfilename = sprintf ("logs/%02d%s.log", 99, name)
-pdffilename = sprintf ("pdfs/%02d%s.pdf", 99, name)
+logfilename = sprintf ("logs/%s.log", name)
+pdffilename = sprintf ("pdfs/%s.pdf", name)
 
 set fit logfile logfilename errorvariables
 set output pdffilename
 
-fit [xmin:xmax] cmSi(x) Si[13] \
-    usi 1:(0.023934*(Si[10]+Si[11]-column(Si[10]%10+1))/column(1)**2) \
-    via Si[1], Si[2], Si[3], Si[4], Si[5], Si[6], Si[7], Si[8], Si[9]
+fit [xmin:xmax] cmCu(x) Cu[13] \
+    usi 1:(0.023934*(Cu[10]+Cu[11]-column(Cu[10]%10+1))/column(1)**2) \
+    via Cu[1], Cu[2], Cu[3], Cu[4], Cu[5], Cu[6], Cu[7], Cu[8], Cu[9]
 
 fit [xmin:xmax] cmAl(x) Al[13] \
     usi 1:(0.023934*(Al[10]+Al[11]-column(Al[10]%10+1))/column(1)**2) \
@@ -86,8 +86,8 @@ fit [xmin:xmax] cmO(x) O[13] \
     via O[1], O[2], O[3], O[4], O[5], O[6], O[7], O[8], O[9]
 
 plot [xmin:xmax] \
-	Si[13] usi 1:(0.023934*(Si[10]+Si[11]-column(Si[10]%10+1))/column(1)**2) noti w p ls 1, \
-	cmSi(x) ti "Si^{IV}" w l ls 1, \
+	Cu[13] usi 1:(0.023934*(Cu[10]+Cu[11]-column(Cu[10]%10+1))/column(1)**2) noti w p ls 1, \
+	cmCu(x) ti "Cu^{IV}" w l ls 1, \
 	Al[13] usi 1:(0.023934*(Al[10]+Al[11]-column(Al[10]%10+1))/column(1)**2) noti w p ls 2, \
 	cmAl(x) ti "Al^{III}"w l ls 2, \
 	O1[13] usi 1:(0.023934*(O1[10]+O1[11]-column(O1[10]%10+1))/column(1)**2) noti w p ls 3, \
