@@ -3,6 +3,7 @@ LOGDIR= logs
 
 PDFS:= $(addprefix $(PDFDIR)/, 98overlay_OO-_CuI-II.pdf \
 				overlay_CuOH.pdf \
+				overlay_CHNOLi.pdf \
 				overlay_SiAlO.pdf \
 			       99overlay_OO-_SiAl.pdf \
 			       )
