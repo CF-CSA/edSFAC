@@ -1,4 +1,4 @@
-set terminal pdfcairo enh color solid font "Tex Gyre Heros,14"
+set terminal pdfcairo enh color solid font "Tex Gyre Heros,20"
 set encoding utf8
 
 # a1 a2 a3 a4 b1 b2 b3 b4 c  Z0 charge
@@ -72,14 +72,14 @@ pdffilename = sprintf ("pdfs/%s.pdf", name)
 
 set output pdffilename
 plot [0:0.6] \
-	cmAl(x) w lp ls 1 ti "f_{el}(Al)", \
-	cmSi(x) w lp ls 2 ti "f_{el}(Si)", \
-	itcdata usi 1:4 w lp ls 3 ti "f_{X}(Al)", \
-	itcdata usi 1:5 w lp ls 4 ti "f_{X}(Si)"
+	cmAl(x) w lp ls 1 ti "f_{ED}(Al)", \
+	cmSi(x) w lp ls 2 ti "f_{ED}(Si)", \
+	itcdata usi 1:4 w lp ls 3 ti "f_{XRD}(Al)", \
+	itcdata usi 1:5 w lp ls 4 ti "f_{XRD}(Si)"
 
 set output sprintf ("pdfs/%s_ratio.pdf", name)
 plot [0:0.6] \
-	cmSi(x)/cmAl(x) w lp ls 1 ti "f_{el}(Si):f_{el}(Al)", \
-	itcdata usi 1:($5/$4) w lp ls 2 ti "f_{X}(Si):f_{X}(Al)"
+	cmSi(x)/cmAl(x) w lp ls 1 ti "f_{ED}(Si):f_{ED}(Al)", \
+	itcdata usi 1:($5/$4) w lp ls 2 ti "f_{XRD}(Si):f_{XRD}(Al)"
 
 
