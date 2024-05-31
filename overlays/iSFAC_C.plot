@@ -51,10 +51,15 @@ pdffilename = sprintf ("pdfs/%s.pdf", name)
 
 set output pdffilename
 
+set yrange [-35:20]
+
 plot [0:xmax] \
 	pcC10*cmCplus(x) + (1.-pcC10)*cmC(x) ti "C10 (iSFAC)" w l ls 3, \
 	pcC14*cmCplus(x) + (1.-pcC14)*cmC(x) ti "C14 (iSFAC)" w l ls 4, \
-	pcC3*cmCminus(x) + (1.-pcC3)*cmC(x) ti "C3 (iSFAC)" w l ls 2, \
+	pcC3*cmCminus(x) + (1.-pcC3)*cmC(x) ti "C3 (iSFAC)" w l ls 2
+
+pdffilename = sprintf ("pdfs/%s_conventional.pdf", name)
+set output pdffilename
+
+plot [0:xmax] \
 	cmC(x) ti "C (traditional)" w l ls 1
-
-

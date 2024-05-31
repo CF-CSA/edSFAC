@@ -28,7 +28,7 @@ set style line 2 lc rgb "dark-green" ps 0.5 pt 2
 set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
 set xtics nomirror
 
-dmax = 21.0 # in Angstrom
+dmax = 14.5 # in Angstrom
 dmin = 0.75 # in Angstrom
 # xmin=0.5/dmax 
 xmin = 0
