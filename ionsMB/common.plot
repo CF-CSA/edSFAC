@@ -25,8 +25,8 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 20.5  # in Angstrom
-dmin = 0.69 # in Angstrom
+dmax = 19.5  # in Angstrom
+dmin = 0.75 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
