@@ -38,8 +38,8 @@ set style line 4 lc rgb "red" lw 2 ps 0.5 pt 2 # O-
 # adjust these
 set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.5" 0.5/1.5, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
 set xtics nomirror
-set xlabel "s [1/\U+212B]"
-set x2label "d [\U+212B]"
+set xlabel "s [1/\U+212B]" offset graph .5,0.12
+set x2label "d [\U+212B]"  offset graph 0.5,-0.14
 
 dmax = 25.0 # in Angstrom
 dmin = 0.9 # in Angstrom
