@@ -52,7 +52,7 @@ PDF= \
 
 all: common.plot ${PDF}
 
-pdfs/%.pdf: %.plot
+pdfs/%.pdf: %.plot Makefile
 	gnuplot $<
 
 	

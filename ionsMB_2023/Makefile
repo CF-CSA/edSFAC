@@ -39,6 +39,8 @@ PDFS:= $(addprefix $(PDFDIR)/, \
 	17Cl7+.pdf \
 	19K1+.pdf \
 	20Ca2+.pdf \
+	26Fe2+.pdf \
+	26Fe3+.pdf \
 	55Cs1+.pdf \
 )
 
