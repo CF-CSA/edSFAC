@@ -42,6 +42,11 @@ PDFS:= $(addprefix $(PDFDIR)/, \
 	26Fe2+.pdf \
 	26Fe3+.pdf \
 	55Cs1+.pdf \
+	57La2+.pdf \
+	57La3+.pdf \
+	58Ce2+.pdf \
+	58Ce3+.pdf \
+	76Os1+.pdf \
 )
 
 all: common_2023.plot sfac-electron.dfx
