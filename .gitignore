@@ -1,12 +1,3 @@
-atoms/pdfs/*.pdf
-atoms/logs
-atoms/sfac-electron.dfx
-ions/pdfs
-ions/logs
-ions/sfac-electron.dfx
-ionsMB/pdfs
-ionsMB/logs
-ionsMB/sfac-electron.dfx
-ionsMB_2023/sfac-electron.dfx
+sfac-electron.dfx
 pdfs
 logs
