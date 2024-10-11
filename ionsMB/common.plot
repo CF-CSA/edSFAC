@@ -11,6 +11,8 @@ cm(x) = ca1*exp(-cb1*x**2) \
         +ca4*exp(-cb4*x**2) \
         + cc
 
+mb(s, fx) = 0.023934*(Z-fx)/s**2
+
 # Z0 = electrons; Z = nuclear charge
 Z= Z0+charge
 # charge = Delta Z in Yonekura
@@ -35,11 +37,12 @@ logfilename = sprintf ("logs/%02d%s.log", Z0, name)
 pdffilename = sprintf ("pdfs/%02d%s.pdf", Z0, name)
 
 set fit logfile logfilename errorvariables
+set fit prescale
 set output pdffilename
 
 # for debugging: plot cm parametrization before fitting
-#plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."Mott Bethe", \
-#	cm(x) ti "Cromer-Mann fit"
+# plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."Mott Bethe", \
+# 	cm(x) ti "Cromer-Mann fit"
 
 fit [xmin:xmax] cm(x) datafile \
     usi 1:(0.023934*(Z-column(col))/column(1)**2) \
@@ -78,17 +81,42 @@ set label 1 sprintf (labelstr, \
                       cc, cc_err)  \
              at graph 0.5,graph 0.7  font "FreeMono,12"
 
-plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name, \
+set print
+stats [xmin:xmax] datafile usi 1:(abs(mb($1, column(col)) - cm($1))) nooutput prefix 'Num'
+
+stats [xmin:xmax] datafile usi (abs(mb($1, column(col)))) nooutput name 'Denom'
+
+Rscat = Num_sum_y/Denom_sum
+set print "Rscat_values.log" append
+print (sprintf("Rscat for %d%s after fitting: %4.3f%% (%4.3f / %4.3f)\n", Z0, name, 100.*Rscat, Num_sum_y, Denom_sum))
+
+plot [xmin:xmax] datafile usi 1:(mb($1, column(col))) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
-set title "Absoulte Difference f_{tab} - f_{CM} between Cromer-Mann approximation and tabulated values"
-set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
+set arrow 1 from Num_pos_min_y, graph 0.1 to Num_pos_min_y, Num_min_y fill
+set arrow 2 from Num_pos_max_y, graph 0.9 to Num_pos_max_y, Num_max_y fill
+set label 4 at Num_pos_min_y, graph 0.1 "min" center offset 0,-1
+set label 5 at Num_pos_max_y, graph 0.9 "max" center offset 0,1
+
+set title "Difference f_{MB} - f_{CM} between Cromer-Mann approximation and Mott-Bethe values"
+set label 1 \
+	sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B", dmax, dmin) \
+	at graph 0.2, graph 0.3 
+set label 2 \
+	sprintf ("s=%10s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", ' ', xmin, xmax) \
+	at graph 0.2, graph 0.22 
+set label 3 \
+	sprintf ("Rscat = %4.3f%%", 100.*Rscat) \
+	at graph 0.2, graph 0.14
 
 plot [xmin:xmax] datafile usi 1:(cm(column(1))-(0.023934*(Z-column(col))/column(1)**2)) noti w lp
 
-set title "Relative difference (f_{tab} - f_{CM})/f_{tab} between Cromer-Mann approximation and tabulated values"
-set label 1 sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B\n s=%11s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", dmax, dmin, " ", xmin, xmax) at graph 0.2, graph 0.2 
+unset arrow 1
+unset arrow 2
+unset label 3
+unset label 4
+unset label 5
+
+set title "Relative difference (f_{MB} - f_{CM})/f_{tab} between Cromer-Mann approximation and Mott-Bethe values"
 
 plot [xmin:xmax] datafile usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
-
-
