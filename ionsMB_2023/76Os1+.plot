@@ -1,4 +1,5 @@
-Z = 76
+Z0 = 76
+charge = +1
 name = "Os1+"
 fidx= 23 #index in datafile
 col= 3  # column in datafile

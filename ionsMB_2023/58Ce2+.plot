@@ -1,4 +1,5 @@
-Z = 58
+Z0 = 58
+charge = +2
 name = "Ce2+"
 fidx= 18 #index in datafile
 col= 5  # column in datafile

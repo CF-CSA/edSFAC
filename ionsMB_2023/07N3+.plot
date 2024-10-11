@@ -1,4 +1,5 @@
-Z = 7
+Z0 = 7
+charge = +3
 name = "N3+"
 fidx=  1 # for new table in common_2023.plot
 col= 5  # for new table in common_2023.plot
@@ -12,13 +13,13 @@ wt = 14.007 # https://en.wikipedia.org/wiki/Sodium
 
 # starting values. The closer the better
 ca1             = 120
-ca2             = 32
-ca3             = 8
+ca2             = 50
+ca3             = 20
 ca4             = 2
 
-cb1             = 1800
-cb2             = 950
-cb3             = 100
+cb1             = 500
+cb2             = 250
+cb3             = 50
 cb4             = 10
 cc              = 0.5
 

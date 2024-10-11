@@ -1,4 +1,5 @@
-Z = 8
+Z0 = 8
+charge = +2
 name = "O2+"
 fidx=  1 # for new table in common_2023.plot
 col= 9  # for new table in common_2023.plot

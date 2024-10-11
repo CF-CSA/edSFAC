@@ -1,4 +1,5 @@
-Z = 9
+Z0 = 9
+charge = -1
 name = "F1-"
 fidx=  1 # for new table in common_2023.plot
 col= 11  # for new table in common_2023.plot

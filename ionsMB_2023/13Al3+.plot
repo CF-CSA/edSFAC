@@ -1,4 +1,5 @@
-Z = 13
+Z0 = 13
+charge = +3
 name = "Al3+"
 fidx= 2 #index in datafile
 col= 5  # column in datafile

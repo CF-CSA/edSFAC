@@ -1,4 +1,5 @@
-Z = 4
+Z0 = 4
+charge = +1
 name = "Be+"
 fidx=  0 # for new table in common_2023.plot
 col= 3  # for new table in common_2023.plot

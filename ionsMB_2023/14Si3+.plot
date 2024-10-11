@@ -1,4 +1,5 @@
-Z = 14
+Z0 = 14
+charge = +3
 name = "Si3+"
 fidx= 2 #index in datafile
 col= 8  # column in datafile

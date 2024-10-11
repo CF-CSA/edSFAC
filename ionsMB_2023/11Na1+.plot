@@ -1,4 +1,5 @@
-Z = 11
+Z0 = 11
+charge = +1
 name = "Na1+"
 fidx= 2 #index in datafile
 col= 2  # column in datafile

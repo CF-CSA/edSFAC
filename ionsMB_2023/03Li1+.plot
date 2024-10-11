@@ -1,4 +1,5 @@
-Z = 3
+Z0 = 3
+charge = +1
 name = "Li+"
 fidx=  0 # for new table in common_2023.plot
 col= 2  # for new table in common_2023.plot

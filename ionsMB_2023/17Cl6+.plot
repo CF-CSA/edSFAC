@@ -1,4 +1,5 @@
-Z = 17
+Z0 = 17
+charge = +6
 name = "Cl6+"
 fidx= 4 #index in datafile
 col= 7  # column in datafile

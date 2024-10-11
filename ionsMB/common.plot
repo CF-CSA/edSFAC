@@ -11,9 +11,10 @@ cm(x) = ca1*exp(-cb1*x**2) \
         +ca4*exp(-cb4*x**2) \
         + cc
 
-mb(s, fx) = 0.023934*(Z-fx)/s**2
+# factor = m_0 e^2 /(8pi eps_0 h^2) in suitable units
+mb(s, fx) = 0.02393366*(Z-fx)/s**2
 
-# Z0 = electrons; Z = nuclear charge
+# Z = electrons; Z0 = nuclear charge
 Z= Z0+charge
 # charge = Delta Z in Yonekura
 
@@ -45,7 +46,7 @@ set output pdffilename
 # 	cm(x) ti "Cromer-Mann fit"
 
 fit [xmin:xmax] cm(x) datafile \
-    usi 1:(0.023934*(Z-column(col))/column(1)**2) \
+    usi 1:(mb($1, column(col))) \
     via ca1, ca2, ca3, ca4, cb1, cb2, cb3, cb4, cc
 
 sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f =\n".\
@@ -56,7 +57,8 @@ print sfac
 set print "sfac-electron.dfx" append
 print sfac
 f000 = ca1+ca2+ca3+ca4+cc;
-print sprintf("REM F000 (%s) = %5.4f", name, f000)
+print sprintf("REM Estimetated F000 (%s) = %5.4f", name, f000)
+print sprintf("REM OVERRIDE F000 %5.4f", f000)
 
 set title sfac
 labelstr=          "a1=%9.4f +/- %5.4f\n"
@@ -81,7 +83,6 @@ set label 1 sprintf (labelstr, \
                       cc, cc_err)  \
              at graph 0.5,graph 0.7  font "FreeMono,12"
 
-set print
 stats [xmin:xmax] datafile usi 1:(abs(mb($1, column(col)) - cm($1))) nooutput prefix 'Num'
 
 stats [xmin:xmax] datafile usi (abs(mb($1, column(col)))) nooutput name 'Denom'
@@ -90,7 +91,8 @@ Rscat = Num_sum_y/Denom_sum
 set print "Rscat_values.log" append
 print (sprintf("Rscat for %d%s after fitting: %4.3f%% (%4.3f / %4.3f)\n", Z0, name, 100.*Rscat, Num_sum_y, Denom_sum))
 
-plot [xmin:xmax] datafile usi 1:(mb($1, column(col))) ti name, \
+plot [xmin:xmax] \
+	datafile usi 1:(mb($1, column(col))) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set arrow 1 from Num_pos_min_y, graph 0.1 to Num_pos_min_y, Num_min_y fill
@@ -109,7 +111,8 @@ set label 3 \
 	sprintf ("Rscat = %4.3f%%", 100.*Rscat) \
 	at graph 0.2, graph 0.14
 
-plot [xmin:xmax] datafile usi 1:(cm(column(1))-(0.023934*(Z-column(col))/column(1)**2)) noti w lp
+plot [xmin:xmax] \
+	datafile usi 1:(cm(column(1))-(mb($1, column(col)))) noti w lp
 
 unset arrow 1
 unset arrow 2
@@ -119,4 +122,5 @@ unset label 5
 
 set title "Relative difference (f_{MB} - f_{CM})/f_{tab} between Cromer-Mann approximation and Mott-Bethe values"
 
-plot [xmin:xmax] datafile usi 1:((cm(column(1))-(0.023934*(Z-column(col))/column(1)**2))/cm(column(1))) noti w lp
+plot [xmin:xmax] \
+	datafile usi 1:((cm(column(1))-mb($1, column(col)))/cm(column(1))) noti w lp

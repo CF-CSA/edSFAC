@@ -59,13 +59,5 @@ $(PDFDIR)/%.pdf: %.plot common_2023.plot
 .PHONY: clean
 
 clean:
-	rm -fr $(PDFDIR)/*.pdf $(LOGDIR)/*.log sfac-electron.dfx
-
-
-
-
-
-
-
-
+	rm -fr $(PDFDIR)/*.pdf $(LOGDIR)/*.log sfac-electron.dfx Rscat_values.log
 
