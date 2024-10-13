@@ -1,6 +1,6 @@
 Z0 = 46
 charge = 0 
-name = "Pd0"
+name = "Pd"
 
 ca1             = 2.80
 ca2             = 2.55
