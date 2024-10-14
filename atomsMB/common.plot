@@ -42,8 +42,8 @@ set fit prescale
 set output pdffilename
 
 # for debugging: plot cm parametrization before fitting
-# plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."Mott Bethe", \
-# 	cm(x) ti "Cromer-Mann fit"
+plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."Mott Bethe", \
+ 	cm(x) ti "Cromer-Mann fit"
 
 fit [xmin:xmax] cm(x) datafile \
     usi 1:(mb($1, column(col))) \
