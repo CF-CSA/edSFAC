@@ -1,6 +1,6 @@
-Z0 = 8
+Z0 = 9
 charge = 0
-name = "O"
+name = "F"
 # fidx=  1 # for new table in common_2023.plot
 # col= 10  # for new table in common_2023.plot
 
@@ -8,8 +8,8 @@ name = "O"
 fp = 0.00
 fpp=  0.00
 mu = 0.00
-r  = 1.26 # https://en.wikipedia.org/wiki/Ionic_radius. O2-
-wt = 15.999 # https://en.wikipedia.org/wiki/Sodium
+r  = 1.19 # https://en.wikipedia.org/wiki/Ionic_radius. O2-
+wt = 18.998 # https://en.wikipedia.org/wiki/Sodium
 
 # starting values. The closer the better
 ca1             = 0.79

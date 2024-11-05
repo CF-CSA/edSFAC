@@ -2,17 +2,21 @@ PDFDIR= pdfs
 LOGDIR= logs
 
 PDFS:= $(addprefix $(PDFDIR)/, \
-			       01H0.pdf \
-			       06C0.pdf \
-                               07N0.pdf \
-			       08O0.pdf \
-			       09F0.pdf \
-			       13Al0.pdf \
-			       14Si0.pdf \
-			       17Cl0.pdf \
-			       31Ga0.pdf \
-			       46Pd0.pdf \
-			       )
+	01H.pdf \
+	02He.pdf \
+	03Li.pdf \
+	04Be.pdf \
+	05B.pdf \
+	06C.pdf \
+	07N.pdf \
+	08O.pdf \
+	09F.pdf \
+	13Al.pdf \
+	14Si.pdf \
+	17Cl.pdf \
+	31Ga.pdf \
+	46Pd.pdf \
+	)
 
 
 all: common.plot sfac-electron.dfx

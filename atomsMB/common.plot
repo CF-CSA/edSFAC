@@ -28,8 +28,8 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 17.5  # in Angstrom
-dmin = 0.70 # in Angstrom
+dmax = 20.0  # in Angstrom
+dmin = 0.60 # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
@@ -42,7 +42,8 @@ set fit prescale
 set output pdffilename
 
 # for debugging: plot cm parametrization before fitting
-plot [xmin:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name."Mott Bethe", \
+set title "Starting point"
+plot [0:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name." (Mott Bethe)", \
  	cm(x) ti "Cromer-Mann fit"
 
 fit [xmin:xmax] cm(x) datafile \
@@ -91,7 +92,7 @@ Rscat = Num_sum_y/Denom_sum
 set print "Rscat_values.log" append
 print (sprintf("Rscat for %d%s after fitting: %4.3f%% (%4.3f / %4.3f)\n", Z0, name, 100.*Rscat, Num_sum_y, Denom_sum))
 
-plot [xmin:xmax] \
+plot [0:xmax] \
 	datafile usi 1:(mb($1, column(col))) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
