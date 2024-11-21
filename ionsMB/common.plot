@@ -56,9 +56,6 @@ sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f 
 print sfac
 set print "sfac-electron.dfx" append
 print sfac
-f000 = ca1+ca2+ca3+ca4+cc;
-print sprintf("REM Estimetated F000 (%s) = %5.4f", name, f000)
-print sprintf("REM OVERRIDE F000 %5.4f", f000)
 
 set title sfac
 labelstr=          "a1=%9.4f +/- %5.4f\n"
