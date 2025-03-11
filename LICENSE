@@ -1,1 +1,24 @@
-The scripts in this repository of covered by CC BY 4.0. This file with be updated with a DOI in case one becomes available. Until this happens, a link to the github repository is considered appropriate credit.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+For attributin, i.e. appropriate credit, cite at least one of the following as
+appropriate:
+- S. Olukayode, C. Froese Fischer and A. Volkov, https://doi.org/10.1107/S205327332300116X for ionic, and https://doi.org/10.1107/S2053273322010944 for neutral species
+
+- Int. Tables Crystallogr, Volume C, Publisher Int. Union Crystallogr. (2006),
+  http://dx.doi.org/10.1107/97809553602060000103
+
+non-ionic scattering factors:
+============================
+
+- L.-M. Peng, "Electron atomic scattering factors and scattering potentials of
+  crystals" Micron (1999), 30, 625-648 
+
+ionic scattering factors:
+=========================
+- K. Yonekura et al., "Ionic scattering factors of atoms that compose biological
+  molecules", IUCrJ (2018), 5, 348-353, DOI
+  https://doi.org/10.1107/S2052252518005237
