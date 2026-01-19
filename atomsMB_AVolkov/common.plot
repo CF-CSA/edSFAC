@@ -24,8 +24,8 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 99.0 # in Angstrom
-dmin = 0.60 # in Angstrom
+dmax = 50 # in Angstrom
+dmin = .7  # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
@@ -53,11 +53,11 @@ sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f 
         name, ca1, cb1, ca2, cb2, ca3, cb3, ca4, cb4, cc, fp, fpp, mu, r, wt)
 
 print sfac
+f000 = ca1+ca2+ca3+ca4+cc;
+print sprintf("REM Estimetated F000 (%s) = %5.4f", name, f000)
+print sprintf("REM OVERRIDE F000 %5.4f", f000)
 set print "sfac-electron.dfx" append
 print sfac
-f000 = ca1+ca2+ca3+ca4+cc;
-# print sprintf("REM Estimetated F000 (%s) = %5.4f", name, f000)
-# print sprintf("REM OVERRIDE F000 %5.4f", f000)
 
 set title sfac
 labelstr=          "a1=%9.4f +/- %5.4f\n"
