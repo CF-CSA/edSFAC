@@ -1,3 +1,26 @@
+Z0 = 1
+
+name = "H"
+
+# additional parameters for SFAC line
+fp = 0.00
+fpp=  0.00
+mu = 0.00
+r  = 0.12 #   https://en.wikipedia.org/wiki/Hydrogen, sp covalent radius
+wt = 1.008 # https://en.wikipedia.org/wiki/Carbon
+# initial Cromer-Mann parameters
+
+ca1 = 0.2
+ca2 = 0.15
+ca3 = 0.10
+ca4 = 0.05
+cb1 = 5
+cb2 = 4
+cb3 = 3
+cb4 = 2
+cc = -0.05
+
+
 set terminal pdfcairo enh color solid font "Tex Gyre Heros,10"
 set encoding utf8
 
@@ -12,15 +35,12 @@ cm(x) = ca1*exp(-cb1*x**2) \
         + cc
 
 # factor = m_0 e^2 /(8pi eps_0 h^2) in suitable units
-mb(s, fx) = 0.02393366*(Z-fx)/s**2
+mb(s, fx) = 0.02393366*(Z0-fx)/s**2
 
-# Z = electrons; Z0 = nuclear charge
-Z= Z0+charge
-# charge = Delta Z in Yonekura
+datafile = "../../sf_Z01-Z10.txt"
 
-fidx=10* (Z0/10) +1
-datafile = sprintf("../../sf_Z%02d-Z%02d.txt", fidx, fidx+9)
-col=Z0%10+1
+col = 2
+print datafile
 
 # adjust these
 set x2tics border ("15" 0.0333, "5" 0.1, "2.5" 0.2, "1.0" 0.5, "0.84" 0.595, "0.75" 0.667, "0.5" 1.0)
@@ -28,8 +48,8 @@ set xtics nomirror
 set xlabel "s [1/\U+212B]"
 set x2label "d [\U+212B]"
 
-dmax = 99.0  # in Angstrom
-dmin = 0.7 # in Angstrom
+dmax = 50 # in Angstrom
+dmin = .65  # in Angstrom
 xmin=0.5/dmax
 xmax=0.5/dmin
 set xrange [0:xmax]
@@ -37,17 +57,19 @@ set xrange [0:xmax]
 logfilename = sprintf ("logs/%02d%s.log", Z0, name)
 pdffilename = sprintf ("pdfs/%02d%s.pdf", Z0, name)
 
-set fit logfile logfilename errorvariables
 set fit prescale
+set fit quiet
+set fit logfile logfilename errorvariables
 set output pdffilename
 
 # for debugging: plot cm parametrization before fitting
-set title "Starting point"
-plot [0:xmax] datafile usi 1:(0.023934*(Z-column(col))/column(1)**2) ti name." (Mott Bethe)", \
+plot [0:xmax] \
+	datafile \
+	usi 1:(mb($1, $2)) ti name.", Mott Bethe", \
  	cm(x) ti "Cromer-Mann fit"
 
-fit [xmin:xmax] cm(x) datafile \
-    usi 1:(mb($1, column(col))) \
+fit [0:xmax] cm(x) datafile \
+    usi 1:(mb($1, $2)) \
     via ca1, ca2, ca3, ca4, cb1, cb2, cb3, cb4, cc
 
 sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f =\n".\
@@ -55,11 +77,11 @@ sfac = sprintf ("SFAC %2s %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f 
         name, ca1, cb1, ca2, cb2, ca3, cb3, ca4, cb4, cc, fp, fpp, mu, r, wt)
 
 print sfac
-set print "sfac-electron.dfx" append
-print sfac
 f000 = ca1+ca2+ca3+ca4+cc;
 print sprintf("REM Estimetated F000 (%s) = %5.4f", name, f000)
 print sprintf("REM OVERRIDE F000 %5.4f", f000)
+set print "sfac-electron.dfx"
+print sfac
 
 set title sfac
 labelstr=          "a1=%9.4f +/- %5.4f\n"
@@ -84,16 +106,19 @@ set label 1 sprintf (labelstr, \
                       cc, cc_err)  \
              at graph 0.5,graph 0.7  font "FreeMono,12"
 
-stats [xmin:xmax] datafile usi 1:(abs(mb($1, column(col)) - cm($1))) nooutput prefix 'Num'
+stats [0:xmax] datafile usi 1:(abs(mb($1, $2) - cm($1))) nooutput prefix 'Num'
 
-stats [xmin:xmax] datafile usi (abs(mb($1, column(col)))) nooutput name 'Denom'
+stats [0:xmax] datafile usi (abs(mb($1, $2))) nooutput name 'Denom'
 
 Rscat = Num_sum_y/Denom_sum
+set print 
+print (sprintf("Rscat for %d%s after fitting: %4.4f%% (%4.3f / %4.3f)\n", Z0, name, 100.*Rscat, Num_sum_y, Denom_sum))
 set print "Rscat_values.log" append
-print (sprintf("Rscat for %d%s after fitting: %4.3f%% (%4.3f / %4.3f)\n", Z0, name, 100.*Rscat, Num_sum_y, Denom_sum))
+print (sprintf("Rscat for %d%s after fitting: %4.4f%% (%4.3f / %4.3f)\n", Z0, name, 100.*Rscat, Num_sum_y, Denom_sum))
 
 plot [0:xmax] \
-	datafile usi 1:(mb($1, column(col))) ti name, \
+	datafile \
+	usi 1:(mb($1, $2)) ti name, \
 	cm(x) ti "Cromer-Mann fit"
 
 set arrow 1 from Num_pos_min_y, graph 0.1 to Num_pos_min_y, Num_min_y fill
@@ -106,14 +131,15 @@ set label 1 \
 	sprintf ("Fit range: %4.2f \U+212B - %4.2f \U+212B", dmax, dmin) \
 	at graph 0.2, graph 0.3 
 set label 2 \
-	sprintf ("s=%10s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", ' ', xmin, xmax) \
+	sprintf ("s=%10s%4.3f \U+212B^{-1} - %4.3f \U+212B^{-1}", ' ', 0.0, xmax) \
 	at graph 0.2, graph 0.22 
 set label 3 \
 	sprintf ("Rscat = %4.3f%%", 100.*Rscat) \
 	at graph 0.2, graph 0.14
 
-plot [xmin:xmax] \
-	datafile usi 1:(cm(column(1))-(mb($1, column(col)))) noti w lp
+plot [0:xmax] \
+	datafile \
+	usi 1:(cm(column(1))-(mb($1, $2))) noti w lp
 
 unset arrow 1
 unset arrow 2
@@ -121,7 +147,8 @@ unset label 3
 unset label 4
 unset label 5
 
-set title "Relative difference (f_{MB} - f_{CM})/f_{tab} between Cromer-Mann approximation and Mott-Bethe values"
+set title "Relative difference (f_{MB} - f_{CM})/f_{MB} between Cromer-Mann approximation and Mott-Bethe values"
 
-plot [xmin:xmax] \
-	datafile usi 1:((cm(column(1))-mb($1, column(col)))/cm(column(1))) noti w lp
+plot [0:xmax] \
+	datafile \
+	usi 1:((cm(column(1))-mb($1, $2))/cm(column(1))) noti w lp

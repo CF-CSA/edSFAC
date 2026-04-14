@@ -3,6 +3,7 @@ PDFDIR= pdfs
 LOGDIR= logs
 
 PDFS:= $(addprefix $(PDFDIR)/, \
+        01H.pdf \
 	02He.pdf \
 	03Li.pdf \
 	04Be.pdf \
